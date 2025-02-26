@@ -20,4 +20,12 @@ export const yarg = yargs(hideBin(process.argv))
         default: false,
         describe: "Show table"
     })
+    .check((argv) => {
+        // Base Validations
+        if (argv.b < 1) throw "[ERROR]: Base must be greater than 0";
+        // Limit Validations
+        if (argv.l < 1) throw "[ERROR]: Limit must be greater than 0";
+
+        return true; // Otherwise All Good
+    })
     .parseSync(); // Parse Args Into Object
