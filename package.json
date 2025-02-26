@@ -23,6 +23,7 @@
   "homepage": "https://github.com/cesarom18/multiplication#readme",
   "devDependencies": {
     "@types/node": "^22.13.5",
+    "@types/yargs": "^17.0.33",
     "nodemon": "^3.1.9",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
