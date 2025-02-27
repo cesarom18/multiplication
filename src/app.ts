@@ -1,3 +1,4 @@
+import { ServerApp } from "./presentation/server-app";
 import { yarg } from "./config/plugins/yargs.plugin";
 
 // Run Main Instantly When The Function Is Created
@@ -6,5 +7,6 @@ import { yarg } from "./config/plugins/yargs.plugin";
 })();
 
 async function main() {
-    console.log(yarg)
+    const { b: base, l: limit, s: show } = yarg;
+    ServerApp.run({ base, limit, show });
 }
