@@ -7,6 +7,6 @@ import { yarg } from "./config/plugins/yargs.plugin";
 })();
 
 async function main() {
-    const { b: base, l: limit, s: show } = yarg;
-    ServerApp.run({ base, limit, show });
+    const { b: base, l: limit, n: name, p: path, s: show } = yarg;
+    ServerApp.run({ base, limit, name, path, show });
 }

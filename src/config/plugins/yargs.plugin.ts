@@ -14,6 +14,18 @@ export const yarg = yargs(hideBin(process.argv))
         default: 10,
         describe: "Table limit"
     })
+    .option("n", {
+        alias: "name",
+        type: "string",
+        default: "table",
+        describe: "File name"
+    })
+    .option("p", {
+        alias: "path",
+        type: "string",
+        default: "outputs",
+        describe: "File path"
+    })
     .option("s", {
         alias: "show",
         type: "boolean",
