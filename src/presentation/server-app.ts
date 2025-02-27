@@ -1,4 +1,5 @@
 import { CreateTable } from "../domain/use-cases/create-table.use-case";
+import { SaveFile } from "../domain/use-cases/save-file.use-case";
 
 interface RunOptions {
     base: number;
@@ -13,5 +14,8 @@ export class ServerApp {
             .execute({ base, limit });
 
         if (show) console.log(table);
+
+        new SaveFile()
+            .execute({ fileContent: table });
     }
 }

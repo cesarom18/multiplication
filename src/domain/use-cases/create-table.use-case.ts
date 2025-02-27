@@ -1,14 +1,14 @@
 interface CreateTableUseCase {
-    execute: (options: CreateTableOptions) => string;
+    execute: (options: Options) => string;
 }
 
-interface CreateTableOptions {
+interface Options {
     base: number;
     limit?: number;
 }
 
 export class CreateTable implements CreateTableUseCase {
-    execute({ base, limit = 10 }: CreateTableOptions) {
+    execute({ base, limit = 10 }: Options) {
         let content = "";
         for (let i = 0; i <= limit; i++) {
             content += `${base} x ${i} = ${base * i}\n`;
