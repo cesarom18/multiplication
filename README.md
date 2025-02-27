@@ -1,0 +1,4 @@
+# Tecnologias
+- NodeJS
+- TypeScript
+- yargs
