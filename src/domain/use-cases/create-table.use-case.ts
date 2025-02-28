@@ -10,8 +10,9 @@ interface Options {
 export class CreateTable implements CreateTableUseCase {
     execute({ base, limit = 10 }: Options) {
         let content = "";
-        for (let i = 0; i <= limit; i++) {
-            content += `${base} x ${i} = ${base * i}\n`;
+        for (let i = 1; i <= limit; i++) {
+            content += `${base} x ${i} = ${base * i}`;
+            if (i < limit) content += "\n";
         }
 
         return content;
