@@ -43,4 +43,30 @@ describe("SaveFileUseCase", () => {
         expect(result).toBe(true); // Make Sure To Return True If File And Directory Was Created
         expect(checkContent).toContain(custonOptions.fileContent); // Check File Test Content
     });
+
+    test("Should return false if directory could not be created", () => {
+        const saveFile = new SaveFile();
+        // Put Spy On 'mkdir' Method And Override Logic Of This One To Generate A Error And Return False
+        const mkdirSpy = jest.spyOn(fs, "mkdir").mockImplementation(() => {
+            throw new Error("This error is created intentionally for this test");
+        });
+        const result = saveFile.execute(custonOptions);
+
+        expect(result).toBe(false);
+
+        mkdirSpy.mockRestore(); // Restore Logic Implementation Of 'mkdir' Method
+    });
+
+    test("Should return false if file could not be created", () => {
+        const saveFile = new SaveFile();
+        // Put Spy On 'writeFileSync' Method And Override Logic Of This One To Generate A Error And Return False
+        const writeFileSpy = jest.spyOn(fs, "writeFileSync").mockImplementation(() => {
+            throw new Error("This error is created intentionally for this test");
+        });
+        const result = saveFile.execute({ fileContent: "test content" });
+
+        expect(result).toBe(false);
+
+        writeFileSpy.mockRestore(); // Restore Logic Implementation Of 'writeFileSync' Method
+    });
 });
