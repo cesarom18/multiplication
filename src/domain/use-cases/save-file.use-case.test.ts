@@ -46,22 +46,22 @@ describe("SaveFileUseCase", () => {
 
     test("Should return false if directory could not be created", () => {
         const saveFile = new SaveFile();
-        // Put Spy On 'mkdir' Method And Override Logic Of This One To Generate A Error And Return False
-        const mkdirSpy = jest.spyOn(fs, "mkdir").mockImplementation(() => {
-            throw new Error("This error is created intentionally for this test");
+        // Put Spy On 'mkdirSync' Method And Override Logic Of This One To Generate A Error And Return False
+        const mkdirSpy = jest.spyOn(fs, "mkdirSync").mockImplementation(() => {
+            throw new Error("This error is created intentionally for third test");
         });
         const result = saveFile.execute(custonOptions);
 
         expect(result).toBe(false);
 
-        mkdirSpy.mockRestore(); // Restore Logic Implementation Of 'mkdir' Method
+        mkdirSpy.mockRestore(); // Restore Logic Implementation Of 'mkdirSync' Method
     });
 
     test("Should return false if file could not be created", () => {
         const saveFile = new SaveFile();
         // Put Spy On 'writeFileSync' Method And Override Logic Of This One To Generate A Error And Return False
         const writeFileSpy = jest.spyOn(fs, "writeFileSync").mockImplementation(() => {
-            throw new Error("This error is created intentionally for this test");
+            throw new Error("This error is created intentionally for fourth test");
         });
         const result = saveFile.execute({ fileContent: "test content" });
 
